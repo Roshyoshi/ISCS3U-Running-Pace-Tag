@@ -1,3 +1,12 @@
+
+def printPaceTime(i, s):
+    h =int(int(s)/ int(3600))
+    ms = s%3600
+    m = int(int(ms)/int(60))
+    s = ms%60
+    print( f"{i:02d}\t{h:02d}:{m:02d}:{s:02d} ")
+
+
 def main():
     runnerName = ""
     while runnerName == "":
@@ -29,8 +38,7 @@ def main():
 
     while True:
         try:
-            goalTime = str(
-                int(input("Enter your Goal Time (format: HHMMSS): ")))
+            goalTime = str(input("Enter your Goal Time (format: HHMMSS): "))
         except:
             print("Please enter a valid numerical Goal.")
             continue
@@ -69,9 +77,14 @@ def main():
         f"Distance = {distance}{shortenedDistanceUnits[distanceUnit]}, Goal Time = {hours}:{minutes}:{seconds}")
     print(f"{shortenedDistanceUnits[distanceUnit]}\tElapsed Time")
 
+    secondsPerKilo = (hours * 3600 + minutes * 60 + seconds)/distance
+
+    for i in range(1, distance + 1):
+        printPaceTime(i, int(i * secondsPerKilo))
+
+
+
+
 
 if __name__ == "__main__":
   main()
-
-# for i in range(1, distance):
-# print()
